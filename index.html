@@ -19,11 +19,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&amp;family=Zen+Kurenaido&amp;family=Zen+Maru+Gothic:wght@500;700&amp;display=swap" rel="stylesheet">
 <style>
 body{margin:0;background:#F7F5EE}
-:root{--hero-h:max(380px, min(56.25vw, calc(100svh - 184px)))}
-.hero-frame{width:min(calc(100% - 48px), calc(var(--hero-h) * 4 / 3));margin:24px auto 0;border-radius:18px}
-.hero-over{left:50%;transform:translateX(-50%);top:24px;width:min(calc(100% - 48px), calc(var(--hero-h) * 4 / 3));border-radius:18px}
-@media (max-width:820px){:root{--hero-h:min(125vw, calc(100svh - 150px))}
-.hero-frame{width:100%;margin:0;border-radius:0}.hero-over{top:0;width:100%;border-radius:0}}
+:root{--hero-h:max(380px, min(56.25vw, calc(100svh - 160px)))}
+.hero-over{left:0;right:0;top:0}
+@media (max-width:820px){:root{--hero-h:min(125vw, calc(100svh - 150px))}}
 a{color:#1E4068}a:hover{color:#16304F}
 .wrap{width:100%;max-width:1080px;margin:0 auto;box-sizing:border-box;padding:0 24px}
 .sec{padding:96px 0;position:relative;overflow:hidden}
@@ -82,7 +80,7 @@ table.t{width:100%;border-collapse:collapse;font-size:15px;min-width:420px}
  .callbar a{flex:1 1 0 !important;padding:0 8px !important;font-size:15px !important}
 }
 
-.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;z-index:1}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%;z-index:1}
 .callbar{transition:transform .3s ease,opacity .3s ease}
 .callbar.is-hidden{transform:translateY(110%);opacity:0;pointer-events:none}
 html{scroll-behavior:smooth;scroll-padding-top:80px}
@@ -118,14 +116,14 @@ html{scroll-behavior:smooth;scroll-padding-top:80px}
   <div class="hero-frame" style="height: var(--hero-h); position: relative; background: #2A3F57; display: flex; align-items: center; justify-content: center; overflow: hidden">
     <div aria-hidden="true" style="position: absolute; inset: 0; background: repeating-linear-gradient(135deg, rgba(255,255,255,.035) 0 18px, rgba(255,255,255,0) 18px 36px)"></div>
     <!-- ▼差し替え：背景の動画（音なし・くり返し）。ファイルをこのページと同じ場所に置いてください。
-         miruto-hero.mp4 … パソコン用（約40秒・4:3） ／ miruto-hero-sp.mp4 … スマホ用（約15秒・縦長 4:5）
-         miruto-hero-poster.jpg … 読み込み中・「動きを減らす」設定の方に見せる止め絵
+         miruto-hero-1102.mp4 … パソコン用（約40秒・横長） ／ miruto-hero-sp-1102.mp4 … スマホ用（約15秒・縦長 4:5）
+         miruto-hero-poster-1102.jpg … 読み込み中・「動きを減らす」設定の方に見せる止め絵
          どちらを流すかは、ページ下の仕組みが画面の幅で選びます。 -->
-    <video class="hero-video" autoplay muted loop playsinline preload="none" poster="miruto-hero-poster.jpg" aria-hidden="true"
-           data-src-pc="miruto-hero.mp4" data-src-sp="miruto-hero-sp.mp4"></video>
+    <video class="hero-video" autoplay muted loop playsinline preload="none" poster="miruto-hero-poster-1102.jpg" aria-hidden="true"
+           data-src-pc="miruto-hero-1102.mp4" data-src-sp="miruto-hero-sp-1102.mp4"></video>
     <div style="position: relative; display: flex; flex-direction: column; align-items: center; gap: 14px; color: #D2D9E1; font-size: 13px; line-height: 1.7; text-align: center; padding: 0 24px; margin-bottom: 12%">
       <span aria-hidden="true" style="width: 64px; height: 64px; border-radius: 50%; border: 2px solid rgba(255,255,255,.55); display: flex; align-items: center; justify-content: center"><svg viewBox="0 0 24 24" width="26" height="26" fill="#fff" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg></span>
-      <span>動画：音なし・くり返し再生（約40秒・4:3の枠）<br>例）送迎車の到着 → 笑顔のあいさつ → 厨房の湯気 → 行事・レクの拍手</span>
+      <span>動画：音なし・くり返し再生（約40秒・画面いっぱい）<br>例）送迎車の到着 → 笑顔のあいさつ → 厨房の湯気 → 行事・レクの拍手</span>
     </div>
   </div>
   <div class="hero-over" style="position: absolute; z-index: 2; height: var(--hero-h); background: linear-gradient(to top, rgba(22,40,62,.58) 0%, rgba(22,40,62,.14) 45%, rgba(22,40,62,0) 70%); display: flex; align-items: flex-end">
