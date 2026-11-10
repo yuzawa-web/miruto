@@ -89,6 +89,15 @@ table.t{width:100%;border-collapse:collapse;font-size:15px;min-width:420px}
  .callbar a{flex:1 1 0 !important;padding:0 8px !important;font-size:15px !important}
 }
 
+/* 背景にゆっくり漂う、博滇会のマーク（飾り）。読み上げ・操作の対象外。「動きを減らす」設定では止まります */
+.hk-float{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.hk-float span{position:absolute;left:var(--x);top:var(--y);width:var(--s);height:calc(var(--s) / 1.5);background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1772 1182'><path d='M0 0H590V590Z' fill='%23B83B2E'/><path d='M1181 0H1772L1181 590Z' fill='%2307466F'/><path d='M590 590H1181L590 1181Z' fill='%23AAABAA'/></svg>") no-repeat center / contain;opacity:.16;animation:hkfloat var(--d) ease-in-out var(--dl) infinite alternate}
+@keyframes hkfloat{from{transform:translate3d(-10px,14px,0) rotate(-6deg)}to{transform:translate3d(18px,-38px,0) rotate(12deg)}}
+.sec > .wrap{position:relative;z-index:1}
+.sec[aria-labelledby="cta-title"] .hk-float span{opacity:.10;filter:brightness(0) invert(1)}
+@media (max-width:820px){.hk-float span{width:calc(var(--s) * .7);height:calc(var(--s) * .7 / 1.5)}}
+@media (prefers-reduced-motion: reduce){.hk-float span{animation:none}}
+
 .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%;z-index:1}
 .callbar{transition:transform .3s ease,opacity .3s ease}
 .callbar.is-hidden{transform:translateY(110%);opacity:0;pointer-events:none}
@@ -156,6 +165,7 @@ html{scroll-behavior:smooth;scroll-padding-top:80px}
 
 <!-- ===== ① 施設のポイント ===== -->
 <section id="points" class="sec" aria-labelledby="points-title" style="background: #fff">
+  <div class="hk-float" aria-hidden="true"><span style="--x:3%;--y:10%;--s:100px;--d:13s;--dl:0s"></span><span style="--x:90%;--y:18%;--s:72px;--d:11s;--dl:-4s"></span><span style="--x:12%;--y:62%;--s:61px;--d:15s;--dl:-9s"></span><span style="--x:84%;--y:70%;--s:104px;--d:12s;--dl:-2s"></span><span style="--x:48%;--y:90%;--s:54px;--d:14s;--dl:-7s"></span></div>
   <div class="wrap">
     <h2 class="h2" id="points-title">みるとの、5つのおすすめポイント</h2>
     <svg class="uline" viewBox="0 0 120 10" aria-hidden="true"><path d="M3 6 C 30 2, 60 9, 117 4" stroke="#E4C939" stroke-width="5" fill="none" stroke-linecap="round"/></svg>
@@ -222,9 +232,10 @@ html{scroll-behavior:smooth;scroll-padding-top:80px}
 
 <!-- ===== ② 1日の流れ ===== -->
 <section id="day" class="sec" aria-labelledby="day-title" style="background: linear-gradient(180deg,#F4F8F9,#EEF4F2); position: relative; overflow: hidden">
+  <div class="hk-float" aria-hidden="true"><span style="--x:4%;--y:6%;--s:79px;--d:12s;--dl:-3s"></span><span style="--x:92%;--y:30%;--s:93px;--d:14s;--dl:-8s"></span><span style="--x:6%;--y:78%;--s:64px;--d:11s;--dl:-1s"></span><span style="--x:88%;--y:88%;--s:72px;--d:13s;--dl:-10s"></span></div>
 <style>
-.d1-head{display:flex;align-items:center;justify-content:center;gap:28px;flex-wrap:wrap}
-.d1-head .lede{margin:0 !important;text-align:left !important;padding-left:24px;border-left:2px solid #C9D3DD;max-width:26em}
+.d1-head{display:flex;flex-direction:column;align-items:center;text-align:center;gap:0}
+.d1-head .lede{margin:0 auto !important;text-align:center !important;padding:0;border:0;max-width:760px}
 .d1{list-style:none;margin:40px 0 0;padding:0 0 0 22px;position:relative;display:grid;gap:18px}
 .d1::before{content:"";position:absolute;left:6px;top:34px;bottom:34px;border-left:2px dotted #8FA6BD}
 .d1 li{display:grid;grid-template-columns:150px 1fr;gap:20px;align-items:center;position:relative}
@@ -257,7 +268,7 @@ html{scroll-behavior:smooth;scroll-padding-top:80px}
   <div class="wrap" style="position: relative">
     <div class="d1-head">
       <div>
-        <h2 class="h2" id="day-title">みるとの、1日</h2>
+        <h2 class="h2" id="day-title">みるとの1日</h2>
         <svg class="uline" viewBox="0 0 120 10" aria-hidden="true"><path d="M3 6 C 30 2, 60 9, 117 4" stroke="#E4C939" stroke-width="5" fill="none" stroke-linecap="round"/></svg>
       </div>
       <p class="lede">朝のお迎えから、夕方ご自宅にお送りするまで。一日の過ごし方の一例です。</p>
@@ -293,6 +304,7 @@ html{scroll-behavior:smooth;scroll-padding-top:80px}
 
 <!-- ===== ③ 料金 ===== -->
 <section id="fee" class="sec" aria-labelledby="fee-title" style="background: #fff">
+  <div class="hk-float" aria-hidden="true"><span style="--x:5%;--y:12%;--s:86px;--d:13s;--dl:-5s"></span><span style="--x:91%;--y:8%;--s:61px;--d:11s;--dl:0s"></span><span style="--x:10%;--y:82%;--s:72px;--d:15s;--dl:-12s"></span><span style="--x:86%;--y:64%;--s:97px;--d:12s;--dl:-6s"></span></div>
   <div class="wrap">
     <h2 class="h2" id="fee-title">ご利用料金の目安</h2>
     <svg class="uline" viewBox="0 0 120 10" aria-hidden="true"><path d="M3 6 C 30 2, 60 9, 117 4" stroke="#E4C939" stroke-width="5" fill="none" stroke-linecap="round"/></svg>
@@ -359,6 +371,7 @@ html{scroll-behavior:smooth;scroll-padding-top:80px}
 
 <!-- ===== ④ パンフレット ===== -->
 <section id="pdf" class="sec" aria-labelledby="pdf-title" style="background: #F7F5EE">
+  <div class="hk-float" aria-hidden="true"><span style="--x:6%;--y:20%;--s:72px;--d:12s;--dl:-2s"></span><span style="--x:90%;--y:26%;--s:90px;--d:14s;--dl:-9s"></span><span style="--x:80%;--y:80%;--s:57px;--d:11s;--dl:-4s"></span></div>
   <div class="wrap">
     <h2 class="h2" id="pdf-title">パンフレットをご覧いただけます</h2>
     <svg class="uline" viewBox="0 0 120 10" aria-hidden="true"><path d="M3 6 C 30 2, 60 9, 117 4" stroke="#E4C939" stroke-width="5" fill="none" stroke-linecap="round"/></svg>
@@ -377,6 +390,7 @@ html{scroll-behavior:smooth;scroll-padding-top:80px}
 
 <!-- ===== ⑤ Instagram ===== -->
 <section id="insta" class="sec" aria-labelledby="insta-title" style="background: #fff">
+  <div class="hk-float" aria-hidden="true"><span style="--x:4%;--y:14%;--s:93px;--d:13s;--dl:-6s"></span><span style="--x:92%;--y:22%;--s:64px;--d:12s;--dl:-1s"></span><span style="--x:8%;--y:80%;--s:61px;--d:15s;--dl:-11s"></span><span style="--x:85%;--y:82%;--s:86px;--d:11s;--dl:-3s"></span></div>
   <div class="wrap">
     <h2 class="h2" id="insta-title">毎日のできごとは、Instagramで</h2>
     <svg class="uline" viewBox="0 0 120 10" aria-hidden="true"><path d="M3 6 C 30 2, 60 9, 117 4" stroke="#E4C939" stroke-width="5" fill="none" stroke-linecap="round"/></svg>
@@ -398,6 +412,7 @@ html{scroll-behavior:smooth;scroll-padding-top:80px}
 
 <!-- ===== ⑥ まずは、ご相談ください ===== -->
 <section class="sec cta" aria-labelledby="cta-title" style="background: #1E4068; color: #fff; text-align: center">
+  <div class="hk-float" aria-hidden="true"><span style="--x:6%;--y:16%;--s:82px;--d:12s;--dl:-4s"></span><span style="--x:90%;--y:70%;--s:93px;--d:14s;--dl:-8s"></span></div>
   <div aria-hidden="true" style="position: absolute; right: -40px; top: -40px; width: 220px; height: 220px; background: rgba(255,255,255,.06); clip-path: polygon(0 0,100% 0,100% 100%)"></div>
   <div aria-hidden="true" style="position: absolute; left: -30px; bottom: -30px; width: 160px; height: 160px; background: rgba(157,184,153,.18); clip-path: polygon(0 100%,100% 100%,0 0)"></div>
   <div class="wrap" style="position: relative">
