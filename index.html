@@ -19,7 +19,7 @@
 <!--
   デイケアセンターみると　ページ（2026年10月19日 作成）
   ・構成：1枚目（動画）→ ①施設のポイント → ②1日の流れ → ③料金 → ④パンフレット → ⑤Instagram → ⑥まずはご相談ください → フッター
-  ・画面下のお問い合わせバーは、1枚目のボタンと最後のご相談が見えているときだけ隠れます。
+  ・画面下のお問い合わせバーは、1枚目のボタンが見えているときだけ隠れ、そこから下はいちばん下まで出たままです。
   ・あとで差し替える場所は「▼差し替え」と、黄色い点線の枠（class="blank"）、写真の枠（class="ph"）で探せます。
   ・料金は、重要事項説明書【別紙】（通所介護及び介護予防通所介護サービス）の金額です。改定のときはここを直してください。
   ・id="btn-…" は押された回数を数える印です。消さないでください。
@@ -480,18 +480,17 @@ html{scroll-behavior:smooth;scroll-padding-top:80px}
   v.muted = true;
   var pr = v.play(); if (pr && pr.catch) pr.catch(function(){});
 })();
-/* 画面下のお問い合わせバー：1枚目のボタンと、最後の「まずは、ご相談ください」が
-   見えているあいだだけ隠します（同じボタンが二重に見えないように） */
+/* 画面下のお問い合わせバー：1枚目のボタンが見えているあいだだけ隠します
+   （同じボタンが二重に見えないように）。そこから下は、いちばん下まで出たままです */
 (function(){
   var bar=document.querySelector('.callbar');
   if(!bar || !('IntersectionObserver' in window)) return;
-  var fv=document.querySelector('.fv-actions'), cta=document.querySelector('.cta');
-  var s={fv:false,cta:false};
+  var fv=document.querySelector('.fv-actions');
+  if(!fv) return;
   var io=new IntersectionObserver(function(es){
-    es.forEach(function(e){ if(e.target===fv) s.fv=e.isIntersecting; else s.cta=e.isIntersecting; });
-    bar.classList.toggle('is-hidden', s.fv||s.cta);
+    es.forEach(function(e){ bar.classList.toggle('is-hidden', e.isIntersecting); });
   },{threshold:0.2});
-  if(fv) io.observe(fv); if(cta) io.observe(cta);
+  io.observe(fv);
 })();
 </script>
 </body>
